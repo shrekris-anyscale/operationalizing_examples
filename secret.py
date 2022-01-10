@@ -33,20 +33,22 @@ class Preprocessor:
 @serve.deployment
 class Model:
 
-    def __init__(self, model_path: str):
-        self.model = self.load_model(model_path)
+    def __init__(self):
+        pass
     
     async def __call__(self, request):
+        # Relies on self.model which is defined **only** in reconfigure
+        # Requires a user_config to be specified
         return self.model.call(request)
     
     # See https://docs.ray.io/en/master/serve/core-apis.html?highlight=reconfigure#user-configuration-experimental
     def reconfigure(self, config):
-        self.model = self.load_model(config["model_path"])
+        self.model = self.load_model(config["secret"])
     
-    def load_model(self, model_path: str):
+    def load_model(self, secret):
         # This function loads a model from the model_path
         pass
 
-Model.options(name="model_A").deploy("./model_A.pkl")
-Model.options(name="model_B").deploy("./model_B.pkl")
+Model.options(name="model_A").deploy()
+Model.options(name="model_B").deploy()
 Preprocessor.deploy(0.7, "model_A", "model_B")
