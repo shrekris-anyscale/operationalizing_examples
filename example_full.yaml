@@ -1,0 +1,31 @@
+Preprocessor:
+  Code_file: ~/operationalizing_examples/example.py
+  Class: example.Preprocessor
+  Num_replicas: None
+  Config: []
+  Version: None
+  Prev_version: None
+  Init_args: None
+  Init_kwargs: None
+  Route_prefix: None
+  Ray_actor_options: None
+  User_config:
+    split: 0.7
+
+model_A:
+  Code_file: ~/operationalizing_examples/example.py
+  Class: example.Model
+  Num_replicas: None
+  # ...all other options from .deployment...
+  Ray_actor_options: None
+  User_config:
+    model_path: ./model_A.pkl
+
+model_B:
+  Code_file: ~/operationalizing_examples/example.py
+  Class: example.Model
+  Num_replicas: None
+  # ...all other options from .deployment...
+  Ray_actor_options: None
+  User_config:
+    model_path: ./model_B.pkl
