@@ -1,3 +1,9 @@
+# Group name allows a cluster to differentiate between different "groups" or
+# pipelines of deployments.
+# Alternatively, it can use the yaml file name, but if we want to allow users
+# to rename their yaml files, then this alternative prevents that.
+Group_name: basic
+
 Preprocessor:
   Code_file: ~/operationalizing_examples/basic.py
   Class: basic.Preprocessor
