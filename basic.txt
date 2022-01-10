@@ -1,0 +1,36 @@
+Directory:
+  - basic.py
+  - basic.yaml
+
+The yaml file specifies links to the python code, so directory structure
+matters (unless using absolute links).
+
+------------------------------------------------------------------------------
+** Deploying Code: Status quo (Still allowed in new proposal) **
+
+(base) operationalizing_examples $ python basic.py
+... Logging statements about deploying the deployments ...
+... The Python file basic.py is run ...
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+** Deploying Code: With yaml **
+
+(base) operationalizing_examples $ serve deploy basic.yaml
+... Connects to remote Ray cluster ...
+... Deploys deployments in specified Deployment_Order ...
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+** Making a Config Change **
+
+(base) operationalizing_examples $ serve deploy basic.yaml
+... Logging statements about updating the deployments specified in basic.yaml ...
+... Essentially equivalent to "Deploying Code: With yaml"
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+** Making a Code Change **
+
+This is performed by then Deploying Code (either with python or serve deploy)
